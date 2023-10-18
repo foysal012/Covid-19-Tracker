@@ -6,11 +6,7 @@ import 'package:http/http.dart' as http;
 
 class CustomHttpClass{
 
- static String baseurl = "https://disease.sh/v3/covid-19/";
-
-  static String worldStateApi = "${baseurl}all";
-
-  static String countriesList = baseurl+"countries";
+   List<CustomHttpClass> worldData = [];
 
   Future<WorldStateModelClass> fetchWorldData() async{
 
@@ -29,22 +25,22 @@ class CustomHttpClass{
   }
 
 
- // Future<List<dynamic>> fetchCountriesData() async{
- //
- //   var response = await http.get(Uri.parse("https://disease.sh/v3/covid-19/countries"));
- //
- //   print(response.body);
- //   print(response.statusCode);
- //
- //   var data = jsonDecode(response.body);
- //
- //   if(response.statusCode == 200){
- //     return data;
- //   } else {
- //     throw Exception("error");
- //   }
- //
- // }
+ Future<List<dynamic>> fetchCountriesData() async{
+
+   var response = await http.get(Uri.parse("https://disease.sh/v3/covid-19/countries"));
+
+   print(response.body);
+   print(response.statusCode);
+
+   var data = jsonDecode(response.body);
+
+   if(response.statusCode == 200){
+     return data;
+   } else {
+     throw Exception("error");
+   }
+
+ }
 
 
 }
