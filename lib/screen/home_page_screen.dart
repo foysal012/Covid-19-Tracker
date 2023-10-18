@@ -256,7 +256,29 @@ class _HomePageScreenState extends State<HomePageScreen>
                         ],
                       );
                     }
-                  })
+                  }),
+
+                          InkWell(
+                            onTap: (){
+                             Navigator.of(context).push(MaterialPageRoute(builder: (context) => SearchPageScreen()));
+                            },
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1aa260),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Text("Track Countries",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                                ),
+                              ),
+                            ),
+                          )
             ])));
   }
 }
