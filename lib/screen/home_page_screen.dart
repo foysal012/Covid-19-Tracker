@@ -206,7 +206,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                               "Deaths": double.parse(
                                   snapshot.data!.deaths.toString()),
                             },
-                            animationDuration: Duration(milliseconds: 2000),
+                            animationDuration: Duration(milliseconds: 1200),
                             chartLegendSpacing: 32,
                             chartRadius:
                                 MediaQuery.of(context).size.width / 3.2,

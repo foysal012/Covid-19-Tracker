@@ -1,4 +1,5 @@
 import 'package:covid_19_tacker/screen/authentication/Signup_page_screen.dart';
+import 'package:covid_19_tacker/screen/authentication/forgetpassword_page_screen.dart';
 import 'package:covid_19_tacker/screen/authentication/signin_page_screen.dart';
 import 'package:covid_19_tacker/screen/authentication/welcome_page_screen.dart';
 import 'package:covid_19_tacker/screen/bottom%20navigation%20ber/bottom_navigation_ber.dart';
@@ -29,12 +30,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      //home: SpalashScreen(),
+      home: SpalashScreen(),
       //home: WelcomePageScreen(),
       //home: SignupPageScreen(),
       //home: IntroductionPageScreen1(),
       //home: IntroductionPageScreen(),
-      home: BottomNavigationBerPageScreen(),
+      //home: BottomNavigationBerPageScreen(),
+      //home: ForgetPasswordPageScreen(),
     );
   }
 }

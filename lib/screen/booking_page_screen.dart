@@ -17,6 +17,7 @@ class _BookingPageScreenState extends State<BookingPageScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: Container(
         //color: Colors.yellow,
@@ -35,61 +36,70 @@ class _BookingPageScreenState extends State<BookingPageScreen> {
             Expanded(
                 flex: 2,
                 child: Container(
-                  child: Column(
-                    children: [
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
 
-                      Row(
-                        children: [
+                        Row(
+                          children: [
 
-                          IconButton(
-                              onPressed: (){},
-                              icon: Icon(Icons.arrow_back_ios),
-                          ),
-
-                          Text("08 October, Friday"),
-
-                          IconButton(
-                              onPressed: (){},
-                              icon: Icon(Icons.calendar_view_day)
-                          ),
-
-
-                        ],
-                      ),
-
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.02,
-                      ),
-
-                      TextFormField(
-                        controller: searchController,
-
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              width: 3,
-                              color: Colors.grey,
+                            IconButton(
+                                onPressed: (){},
+                                icon: Icon(Icons.arrow_back_ios),
                             ),
-                          ),
 
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(15),
-                            borderSide: BorderSide(
-                              width: 3,
-                              color: Colors.grey,
+                            Text("08 October, Friday"),
+
+                            IconButton(
+                                onPressed: (){},
+                                icon: Icon(Icons.calendar_view_day)
                             ),
-                          ),
 
-                          prefixIcon: Icon(Icons.search),
 
-                          suffixIcon: Icon(Icons.keyboard_voice),
-
-                          hintText: "Search Hospital",
-
+                          ],
                         ),
-                      )
-                    ],
+
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.02,
+                        ),
+
+                        TextFormField(
+                          controller: searchController,
+
+                          onChanged: (value){
+                            setState(() {
+                              
+                            });
+                          },
+
+                          decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 3,
+                                color: Colors.grey,
+                              ),
+                            ),
+
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 3,
+                                color: Colors.grey,
+                              ),
+                            ),
+
+                            prefixIcon: Icon(Icons.search),
+
+                            suffixIcon: Icon(Icons.keyboard_voice),
+
+                            hintText: "Search Hospital",
+
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 )),
 
@@ -104,96 +114,196 @@ class _BookingPageScreenState extends State<BookingPageScreen> {
                     shrinkWrap: true,
                       reverse: false,
                       itemBuilder: (context, index){
-                      return Stack(
-                        children: [
-
-                          Container(
-                            height: 200,
-                            width: double.infinity,
-                            padding: EdgeInsets.only(
-                              left: 20,
-                            ),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              border: Border.all(
-                                width: 3,
-                                color: Colors.grey,
-                              ),
-                              gradient: LinearGradient(
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                colors: [
-                                  //Colors.white,
-                                  //Colors.white70,
-                                  Colors.white54,
-                                  Colors.indigo.withOpacity(0.3),
-                                  Colors.indigo.withOpacity(0.6),
-                                  Colors.indigo.withOpacity(0.9),
-                                  Colors.indigo,
-                                ]
-                              )
-                            ),
-                            child: Row(
+                        var name = dataList[index].hName;
+                          if(searchController.text == null){
+                            return Stack(
                               children: [
-                                Expanded(
-                                    flex: 6,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text("${dataList[index].hName}"),
-                                        SizedBox(
-                                          height: MediaQuery.of(context).size.height * 0.001,
-                                        ),
-                                        Text("${dataList[index].hAddress}"),
-                                        SizedBox(
-                                          height: MediaQuery.of(context).size.height * 0.001,
-                                        ),
-                                        Text("${dataList[index].hHotline}"),
-                                      ],
-                                    ),
-                                ),
-                                Expanded(
-                                    flex: 3,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
+
+                                Container(
+                                  height: 200,
+                                  width: double.infinity,
+                                  padding: EdgeInsets.only(
+                                    left: 20,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      border: Border.all(
+                                        width: 3,
+                                        color: Colors.grey,
+                                      ),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.centerLeft,
+                                          end: Alignment.centerRight,
+                                          colors: [
+                                            //Colors.white,
+                                            //Colors.white70,
+                                            Colors.white54,
+                                            Colors.indigo.withOpacity(0.3),
+                                            Colors.indigo.withOpacity(0.6),
+                                            Colors.indigo.withOpacity(0.9),
+                                            Colors.indigo,
+                                          ]
+                                      )
+                                  ),
+                                  child: Row(
                                     children: [
-                                      Text("${dataList[index].hBedNumber} Beds"),
+                                      Expanded(
+                                        flex: 6,
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text("${dataList[index].hName}"),
+                                            SizedBox(
+                                              height: MediaQuery.of(context).size.height * 0.001,
+                                            ),
+                                            Text("${dataList[index].hAddress}"),
+                                            SizedBox(
+                                              height: MediaQuery.of(context).size.height * 0.001,
+                                            ),
+                                            Text("${dataList[index].hHotline}"),
+                                          ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 3,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text("${dataList[index].hBedNumber} Beds"),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ),
+
+                                Positioned(
+                                    bottom: 3,
+                                    right: 3,
+                                    child: InkWell(
+                                      onTap:(){
+                                        Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookingPageScreen_1(
+                                          bookingList: dataList[index],
+                                        )));
+                                      },
+                                      child: Container(
+                                        height: 50,
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.only(
+                                            bottomRight: Radius.circular(20),
+                                          ),
+                                          color: Colors.deepPurple,
+                                        ),
+                                        child: Center(child: Text("Book",
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold
+                                          ),
+                                        )),
+                                      ),
+                                    )
+                                )
+
                               ],
-                            ),
-                          ),
+                            );
+                          } else if(name.toString().toLowerCase().contains(searchController.text.toLowerCase())){
+                          return Stack(
+                            children: [
 
-                          Positioned(
-                              bottom: 3,
-                              right: 3,
-                              child: InkWell(
-                                onTap:(){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookingPageScreen_1()));
-                                },
-                                child: Container(
-                                  height: 50,
-                                  width: 70,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.only(
-                                      bottomRight: Radius.circular(20),
-                                    ),
-                                    color: Colors.deepPurple,
-                                  ),
-                                  child: Center(child: Text("Book",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold
-                                  ),
-                                  )),
+                              Container(
+                                height: 200,
+                                width: double.infinity,
+                                padding: EdgeInsets.only(
+                                  left: 20,
                                 ),
-                              )
-                          )
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    border: Border.all(
+                                      width: 3,
+                                      color: Colors.grey,
+                                    ),
+                                    gradient: LinearGradient(
+                                        begin: Alignment.centerLeft,
+                                        end: Alignment.centerRight,
+                                        colors: [
+                                          //Colors.white,
+                                          //Colors.white70,
+                                          Colors.white54,
+                                          Colors.indigo.withOpacity(0.3),
+                                          Colors.indigo.withOpacity(0.6),
+                                          Colors.indigo.withOpacity(0.9),
+                                          Colors.indigo,
+                                        ]
+                                    )
+                                ),
+                                child: Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 6,
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text("${dataList[index].hName}"),
+                                          SizedBox(
+                                            height: MediaQuery.of(context).size.height * 0.001,
+                                          ),
+                                          Text("${dataList[index].hAddress}"),
+                                          SizedBox(
+                                            height: MediaQuery.of(context).size.height * 0.001,
+                                          ),
+                                          Text("${dataList[index].hHotline}"),
+                                        ],
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 3,
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text("${dataList[index].hBedNumber} Beds"),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
 
-                        ],
-                      );
+                              Positioned(
+                                  bottom: 3,
+                                  right: 3,
+                                  child: InkWell(
+                                    onTap:(){
+                                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookingPageScreen_1(
+                                        bookingList: dataList[index],
+                                      )));
+                                    },
+                                    child: Container(
+                                      height: 50,
+                                      width: 70,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(20),
+                                        ),
+                                        color: Colors.deepPurple,
+                                      ),
+                                      child: Center(child: Text("Book",
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                        ),
+                                      )),
+                                    ),
+                                  )
+                              )
+
+                            ],
+                          );
+                        } else{
+                            return Container();
+                        }
                       },
                       separatorBuilder: (_,index){
                       return  SizedBox(height: MediaQuery.of(context).size.height * 0.02,

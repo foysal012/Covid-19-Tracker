@@ -1,23 +1,19 @@
 import 'package:covid_19_tacker/screen/authentication/Signup_page_screen.dart';
-import 'package:covid_19_tacker/screen/authentication/forgetpassword_page_screen.dart';
+import 'package:covid_19_tacker/screen/authentication/signin_page_screen.dart';
 import 'package:covid_19_tacker/screen/introduction%20screen/intoduction_page_screen.dart';
 import 'package:flutter/material.dart';
 
-class SigninPageScreen extends StatefulWidget {
-  const SigninPageScreen({Key? key}) : super(key: key);
+class ForgetPasswordPageScreen extends StatefulWidget {
+  const ForgetPasswordPageScreen({Key? key}) : super(key: key);
 
   @override
-  State<SigninPageScreen> createState() => _SigninPageScreenState();
+  State<ForgetPasswordPageScreen> createState() => _ForgetPasswordPageScreenState();
 }
 
-class _SigninPageScreenState extends State<SigninPageScreen> {
+class _ForgetPasswordPageScreenState extends State<ForgetPasswordPageScreen> {
 
-  TextEditingController usernameController = TextEditingController();
+
   TextEditingController emailOrPhoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  bool selected = false;
-
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +50,7 @@ class _SigninPageScreenState extends State<SigninPageScreen> {
               SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
 
               Center(
-                child: Text("Welcome Back!",
+                child: Text("Forget Password?",
                   //textAlign: TextAlign.center,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -74,66 +70,11 @@ class _SigninPageScreenState extends State<SigninPageScreen> {
 
               SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
-              ReUseAbleField(
-                usernameController: passwordController,
-                title: "Password",
-                title1: "Enter New Password",
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height * 0.001,),
-
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-
-                  Row(
-                    children: [
-                      Checkbox(
-                          value: selected,
-                          onChanged: (value){
-                            setState(() {
-                              selected = !selected;
-                            });
-                          }),
-
-                      SizedBox(width: 1,),
-
-                      Text("Remember Password",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 14,
-                            color: Color(0xff3B3A79)
-                        ),
-                      ),
-                    ],
-                  ),
-
-
-                      InkWell(
-                        onTap: (){
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => ForgetPasswordPageScreen()));
-                        },
-                        child: Text("Forgot Password?",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                              color: Color(0xff3B3A79)
-                          ),
-                        ),
-                      ),
-
-                ],
-              ),
-
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
               InkWell(
                 onTap: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> IntroductionPageScreen()));
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successfully Sign Ip")));
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SigninPageScreen()));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Successfully sent a reset link in your email...")));
                 },
                 child: Container(
                   height: 50,
@@ -143,7 +84,7 @@ class _SigninPageScreenState extends State<SigninPageScreen> {
                       color: Color(0xff3B3A79)
                   ),
                   child: Center(
-                    child: Text("Sign In",
+                    child: Text("Reset",
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -156,54 +97,13 @@ class _SigninPageScreenState extends State<SigninPageScreen> {
 
               SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: (){},
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(image: AssetImage("images/w2.png",),),
-                          border: Border.all(
-                            width: 3,
-                            color: Colors.grey.withOpacity(0.5),
-                          )
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(width: 10,),
-
-                  InkWell(
-                    onTap: (){
-
-                    },
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(image: AssetImage("images/w3.png")),
-                          border: Border.all(
-                            width: 3,
-                            color: Colors.grey.withOpacity(0.5),
-                          )
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-
               SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
 
-                  Text("Don't have an account?",
+                  Text("Suddenly Remember Password?",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[500],
@@ -215,9 +115,9 @@ class _SigninPageScreenState extends State<SigninPageScreen> {
 
                   InkWell(
                     onTap: (){
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SignupPageScreen()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context)=> SigninPageScreen()));
                     },
-                    child: Text("Sign Up",
+                    child: Text("Sign In",
                       style: TextStyle(
                         fontSize: 18,
                         color: Color(0xff3B3A79),

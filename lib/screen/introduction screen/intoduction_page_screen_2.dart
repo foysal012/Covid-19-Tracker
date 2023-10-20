@@ -1,3 +1,4 @@
+import 'package:covid_19_tacker/screen/bottom%20navigation%20ber/bottom_navigation_ber.dart';
 import 'package:flutter/material.dart';
 
 class IntroductionPageScreen2 extends StatefulWidget {
@@ -40,7 +41,7 @@ class _IntroductionPageScreen2State extends State<IntroductionPageScreen2> {
 
             InkWell(
               onTap: (){
-
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) => BottomNavigationBerPageScreen()));
               },
               child: Container(
                 height: 50,

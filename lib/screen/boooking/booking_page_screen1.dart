@@ -1,11 +1,15 @@
 import 'dart:math';
 
 import 'package:covid_19_tacker/model%20class/booking_details_model_class.dart';
+import 'package:covid_19_tacker/screen/booking_page_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 
 class BookingPageScreen_1 extends StatefulWidget {
-  const BookingPageScreen_1({Key? key}) : super(key: key);
+   BookingPageScreen_1({Key? key, this.bookingList}) : super(key: key);
+
+   BookingDeatilsModelClass? bookingList;
 
   @override
   State<BookingPageScreen_1> createState() => _BookingPageScreen_1State();
@@ -25,6 +29,20 @@ class _BookingPageScreen_1State extends State<BookingPageScreen_1> {
   List<String> gName = ["Male", "Female", "Other"];
 
   List<String> timeSelect = ["9-10 AM", "10-11 AM", "11-12 PM", "12-1 PM", "1-2 PM", "2-3 PM"];
+
+  XFile? image;
+  ImagePicker _picker = ImagePicker();
+
+  void uploadImage() async{
+
+    image = await _picker.pickImage(source: ImageSource.camera);
+    //
+    // if(image != null){
+    //
+    // } else{
+    //
+    // }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,35 +90,6 @@ class _BookingPageScreen_1State extends State<BookingPageScreen_1> {
                       height: MediaQuery.of(context).size.height * 0.02,
                     ),
 
-                    // TextFormField(
-                    //   controller: searchController,
-                    //
-                    //   decoration: InputDecoration(
-                    //     enabledBorder: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(15),
-                    //       borderSide: BorderSide(
-                    //         width: 3,
-                    //         color: Colors.grey,
-                    //       ),
-                    //     ),
-                    //
-                    //     focusedBorder: OutlineInputBorder(
-                    //       borderRadius: BorderRadius.circular(15),
-                    //       borderSide: BorderSide(
-                    //         width: 3,
-                    //         color: Colors.grey,
-                    //       ),
-                    //     ),
-                    //
-                    //     prefixIcon: Icon(Icons.search),
-                    //
-                    //     suffixIcon: Icon(Icons.keyboard_voice),
-                    //
-                    //     hintText: "Search Hospital",
-                    //
-                    //   ),
-                    // )
-
                     Text("Patient's Photo ID will be verified while\ngetting admitted to the hospital. Please\nprovide details of the Photo ID of the patient.",
                     style: TextStyle(
                       color: Colors.red,
@@ -130,7 +119,7 @@ class _BookingPageScreen_1State extends State<BookingPageScreen_1> {
                   TextFormField(
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
-                      hintText: "Upload Photo ID",
+                      hintText: image != null ? "image.png" : "Upload Photo ID",
 
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
@@ -150,7 +139,7 @@ class _BookingPageScreen_1State extends State<BookingPageScreen_1> {
 
                       suffixIcon: IconButton(
                           onPressed: (){
-
+                            uploadImage();
                           },
                           icon: Icon(Icons.keyboard_arrow_down_sharp)
                       )
@@ -346,26 +335,85 @@ class _BookingPageScreen_1State extends State<BookingPageScreen_1> {
                     onTap: (){
                       showDialog(context: context, builder: (BuildContext context){
                         return AlertDialog(
-                          title: Text("Select a Tme Slot"),
+                          title: Text("Booking Successful!"),
                           content: Column(
+                            mainAxisSize: MainAxisSize.min,
                             children: [
-                              ListView.separated(
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.001,
+                              ),
 
-                                  itemBuilder: (context, index){
-                                    return Container(
-                                      child: Text(timeSelect[index]),
-                                    );
-                                  },
-                                  separatorBuilder: (_,index){
-                                    return SizedBox(width: 3,);
-                                  },
-                                  itemCount: timeSelect.length,
-                                scrollDirection: Axis.horizontal,
+
+                              Container(
+                                height: 70,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.deepPurple,
+                                ),
+                                child: Icon(Icons.check,color: Colors.white,),
+                              ),
+
+                        SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.03,
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Date"),
+
+                        Text(dateController.text),
+                        ],
+                        ),
+
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.01,
+                              ),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Booking Number"),
+
+                                  Text("PR74930"),
+                                ],
+                              ),
+
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.01,
+                              ),
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text("Hospital"),
+
+                                  Text("${widget.bookingList!.hName}"),
+
+                                ],
+                              ),
+
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.03,
+                              ),
+
+                              Text("You'll get a booking confirmation via SMS\non you registered mobile number",
+                                style: TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                              ),
+
+                              SizedBox(
+                                height: MediaQuery.of(context).size.height * 0.03,
                               ),
 
                               InkWell(
                                 onTap: (){
-
+                                  Navigator.of(context).pop();
+                                  //Navigator.of(context).push(MaterialPageRoute(builder: (context)=>BookingPageScreen()));
                                 },
                                 child: Container(
                                   height: 50,
