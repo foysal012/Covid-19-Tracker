@@ -213,7 +213,7 @@ class _HomePageScreenState extends State<HomePageScreen>
                             colorList: colorList,
                             initialAngleInDegree: 0,
                             chartType: ChartType.ring,
-                            ringStrokeWidth: 25,
+                            ringStrokeWidth: 50,
                             legendOptions: const LegendOptions(
                               showLegendsInRow: false,
                               legendPosition: LegendPosition.left,

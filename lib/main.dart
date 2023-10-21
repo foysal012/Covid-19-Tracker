@@ -4,6 +4,7 @@ import 'package:covid_19_tacker/screen/authentication/signin_page_screen.dart';
 import 'package:covid_19_tacker/screen/authentication/welcome_page_screen.dart';
 import 'package:covid_19_tacker/screen/bottom%20navigation%20ber/bottom_navigation_ber.dart';
 import 'package:covid_19_tacker/screen/introduction%20screen/intoduction_page_screen_1.dart';
+import 'package:covid_19_tacker/screen/profile_page_screen.dart';
 import 'package:covid_19_tacker/screen/splash%20screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
       //home: IntroductionPageScreen(),
       //home: BottomNavigationBerPageScreen(),
       //home: ForgetPasswordPageScreen(),
+      //home: ProfilePageScreen(),
     );
   }
 }

@@ -17,7 +17,7 @@ class _BottomNavigationBerPageScreenState extends State<BottomNavigationBerPageS
     HomePageScreen(),
     SearchPageScreen(),
     BookingPageScreen(),
-    //ProfilePageScreen(),
+    ProfilePageScreen(),
   ];
 
   var currentIndex = 0;
@@ -64,11 +64,11 @@ class _BottomNavigationBerPageScreenState extends State<BottomNavigationBerPageS
             backgroundColor: Color(0xff3B3A79),
           ),
 
-          // BottomNavigationBarItem(
-          //   label: "Profile",
-          //   icon: Icon(Icons.person),
-          //   backgroundColor: Color(0xff3B3A79),
-          // ),
+          BottomNavigationBarItem(
+            label: "Profile",
+            icon: Icon(Icons.person),
+            backgroundColor: Color(0xff3B3A79),
+          ),
 
         ],
       ),
